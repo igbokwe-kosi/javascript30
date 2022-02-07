@@ -102,11 +102,12 @@ console.table(yearsLived);
 
 // 7. sort Exercise
 // Sort the people alphabetically by last name
-const lastNameOrdered = people
-  .map(names => names.split(',').map(name => name.replaceAll(' ', '')))
-  .flat()
-  .filter(name => name.length % 2 === 1)
-  .sort();
+// const lastNameOrdered = people
+//   .map(names => names.split(',').map(name => name.replaceAll(' ', '')))
+//   .flat()
+//   .filter(name => name.length % 2 === 1)
+//   .sort();
+const lastNameOrdered = people.sort((a, b) => a[1] - b[1]);
 console.log(lastNameOrdered);
 // 8. Reduce Exercise
 // Sum up the instances of each of these
@@ -126,3 +127,9 @@ const data = [
   'car',
   'truck',
 ];
+const instancesOfCars = data.reduce((obj, car) => {
+  obj[car] ? obj[car]++ : (obj[car] = 1);
+  return obj;
+}, {});
+
+console.log(instancesOfCars);
